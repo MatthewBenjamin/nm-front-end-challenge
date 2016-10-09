@@ -1,10 +1,13 @@
 // search-form.js
-define(['knockout', 'text!../../kotemplates/searchform.html'], function(ko, htmlString) {
+define(['knockout', 'youtube', 'text!../../kotemplates/searchform.html'],
+    function(ko, youtube, htmlString) {
     var searchForm = function(params) {
-        this.searchTerm = params.searchTerm;
+        this.searchResults = params.searchResults;
 
         this.parseSearch = function (searchInput) {
-            searchTerm(searchInput.query.value);
+            var searchTerm = searchInput.query.value
+            var resultsContainer = this.searchResults;
+            youtube.requestVideos(searchTerm, resultsContainer);
         };
     };
 

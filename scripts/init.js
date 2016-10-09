@@ -12,12 +12,15 @@ requirejs.config({
         ],
         app: 'app',
         // kocomponents
-        searchForm: 'kocomponents/search-form'
+        searchForm: 'kocomponents/search-form',
+        // api
+        youtube: 'api/youtube',
     },
 });
 
 // launch app w/ require dependencies
-require(['knockout', 'app'],
+require(['knockout', 'app', 'searchForm'],
     function (ko, ViewModel, searchForm) {
+    ko.components.register('search-form', { require: 'searchForm' });
     ko.applyBindings(ViewModel);
 });
