@@ -38,7 +38,7 @@ define(['jquery', 'videoResult'], function ($, videoResult){
     }
 
     youtube.requestVideos = function (
-        searchTerm, videoResultsContainer, metaResultsContainer) {
+        searchTerm, videoResultsContainer, metaResultsContainer, currentVideoSelection) {
 
         var requestURL = makeRequestURL(searchTerm);
 
@@ -47,6 +47,7 @@ define(['jquery', 'videoResult'], function ($, videoResult){
                 var results = parseResults(data)
                 videoResultsContainer(results.videoResults);
                 metaResultsContainer(results.metaResults);
+                currentVideoSelection(videoResultsContainer()[0]);
             },
             error: function () {
                 // TODO: add error msg for user
