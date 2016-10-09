@@ -13,6 +13,9 @@ requirejs.config({
         app: 'app',
         // kocomponents
         searchForm: 'kocomponents/search-form',
+        resultsList: 'kocomponents/results-list',
+        metaResults: 'kocomponents/meta-results',
+        currentVideoSelection: 'kocomponents/current-video-selection',
         // api
         youtube: 'api/youtube',
         videoResult: 'videoResult',
@@ -23,5 +26,8 @@ requirejs.config({
 require(['knockout', 'app', 'searchForm'],
     function (ko, ViewModel, searchForm) {
     ko.components.register('search-form', { require: 'searchForm' });
+    ko.components.register('results-list', { require: 'resultsList' });
+    ko.components.register('meta-results', { require: 'metaResults' });
+    ko.components.register('current-video-selection', { require: 'currentVideoSelection' });
     ko.applyBindings(ViewModel);
 });

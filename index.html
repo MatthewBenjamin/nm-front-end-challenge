@@ -8,28 +8,22 @@
     <header>
         <h1>Youtube Search</h1>
         <div data-bind="component: {
-            name: 'search-form',
-            params: {
-                videoResults: videoResults,
-                metaResults: metaResults
-                }
+            name: 'search-form'
             }">
         </div>
     </header>
     <main>
-        <div class="column column-one">
-            <ul data-bind="foreach: videoResults">
-                <li data-bind="click: currentVideoSelection">
-                    <p data-bind="text: title"></p>
-                </li>
-            </ul>
-            <div data-bind="with: metaResults">
-                <!-- ko if: pageInfo -->
-                <p data-bind="text: pageInfo.totalResults"></p>
-                <!-- /ko -->
-            </div>
-        </div><div data-bind="with: currentVideoSelection" class="column column-two">
-            <p data-bind="text: title"></p>
+        <div class="column">
+            <div data-bind="component: {
+                name: 'current-video-selection'
+            }"></div>
+        </div><div class="column">
+            <div data-bind="component: {
+                name: 'results-list'
+            }"></div>
+            <div data-bind="component: {
+                name: 'meta-results'
+            }"></div>
         </div>
     </main>
     <footer></footer>
