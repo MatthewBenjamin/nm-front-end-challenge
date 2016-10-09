@@ -15,6 +15,7 @@ requirejs.config({
         searchForm: 'kocomponents/search-form',
         // api
         youtube: 'api/youtube',
+        videoResult: 'videoResult',
     },
 });
 

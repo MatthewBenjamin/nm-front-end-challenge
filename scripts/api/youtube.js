@@ -1,5 +1,5 @@
 // youtube.js
-define(['jquery'], function ($){
+define(['jquery', 'videoResult'], function ($, videoResult){
     var youtube = {};
 
     function makeRequestURL(searchTerm) {
@@ -19,7 +19,10 @@ define(['jquery'], function ($){
 
     function parseResults (results) {
         sortSnippets(results.items);
-        var videoResults = results.items;
+        var videoResults = [];
+        results.items.forEach(function(result) {
+            videoResults.push(new videoResult(result));
+        });
         var metaResults = {
             nextPageToken: results.nextPageToken || null,
             prevPageToken: results.prevPageToken || null,
