@@ -2,7 +2,8 @@ define(['jquery', 'knockout'], function($, ko) {
     var ViewModel = function(){
         var self = this;
 
-        self.searchResults = ko.observableArray();
+        self.videoResults = ko.observableArray();
+        self.metaResults = ko.observable();
     };
 
     return ViewModel;

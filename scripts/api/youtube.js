@@ -9,13 +9,41 @@ define(['jquery'], function ($){
                'q=' + searchTerm;
     }
 
-    youtube.requestVideos = function (searchTerm, resultsContainer) {
+    function sortSnippets (snippetList) {
+        snippetList.sort(function(a,b) {
+          var snippetA = a.snippet.title.toUpperCase();
+          var snippetB = b.snippet.title.toUpperCase();
+          return (snippetA < snippetB) ? -1 : (snippetA > snippetB) ? 1 : 0;
+        });
+    }
+
+    function parseResults (results) {
+        sortSnippets(results.items);
+        var videoResults = results.items;
+        var metaResults = {
+            nextPageToken: results.nextPageToken || null,
+            prevPageToken: results.prevPageToken || null,
+            pageInfo: {
+                totalResults: results.pageInfo.totalResults || null,
+                resultsPerPage: results.pageInfo.resultsPerPage || null,
+            },
+        };
+        return {
+            videoResults: videoResults,
+            metaResults: metaResults,
+        };
+    }
+
+    youtube.requestVideos = function (
+        searchTerm, videoResultsContainer, metaResultsContainer) {
+
         var requestURL = makeRequestURL(searchTerm);
 
         var requestSettings = {
             success: function (data) {
-                console.log(data);
-                resultsContainer(data.items);
+                var results = parseResults(data)
+                videoResultsContainer(results.videoResults);
+                metaResultsContainer(results.metaResults);
             },
             error: function () {
                 // TODO: add error msg for user

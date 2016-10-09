@@ -2,12 +2,14 @@
 define(['knockout', 'youtube', 'text!../../kotemplates/searchform.html'],
     function(ko, youtube, htmlString) {
     var searchForm = function(params) {
-        this.searchResults = params.searchResults;
+        this.videoResults = params.videoResults;
+        this.metaResults = params.metaResults;
 
         this.parseSearch = function (searchInput) {
             var searchTerm = searchInput.query.value
-            var resultsContainer = this.searchResults;
-            youtube.requestVideos(searchTerm, resultsContainer);
+            var videoResultsContainer = this.videoResults;
+            var metaResultsContainer = this.metaResults;
+            youtube.requestVideos(searchTerm, videoResultsContainer, metaResultsContainer);
         };
     };
 
