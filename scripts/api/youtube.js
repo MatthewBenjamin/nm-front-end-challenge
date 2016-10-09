@@ -9,6 +9,7 @@ define(['jquery', 'videoResult'], function ($, videoResult){
                'q=' + searchTerm;
     }
 
+    // TODO: refactor into general alphabatize, move into util library
     function sortSnippets (snippetList) {
         snippetList.sort(function(a,b) {
           var snippetA = a.snippet.title.toUpperCase();
@@ -17,13 +18,18 @@ define(['jquery', 'videoResult'], function ($, videoResult){
         });
     }
 
-    function parseResults (results) {
-        sortSnippets(results.items);
+    function parseVideoResults(videoList) {
+        sortSnippets(videoList);
         var videoResults = [];
-        results.items.forEach(function(result) {
+        videoList.forEach(function(result) {
             videoResults.push(new videoResult(result));
         });
-        var metaResults = {
+
+        return videoResults;
+    }
+
+    function parseMetadata(results) {
+        return {
             nextPageToken: results.nextPageToken || null,
             prevPageToken: results.prevPageToken || null,
             pageInfo: {
@@ -31,6 +37,12 @@ define(['jquery', 'videoResult'], function ($, videoResult){
                 resultsPerPage: results.pageInfo.resultsPerPage || null,
             },
         };
+    }
+
+    function parseResults (results) {
+        var videoResults = parseVideoResults(results.items);
+        var metaResults = parseMetadata(results);
+
         return {
             videoResults: videoResults,
             metaResults: metaResults,
