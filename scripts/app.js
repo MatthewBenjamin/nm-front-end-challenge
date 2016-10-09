@@ -1,10 +1,6 @@
-/*
-function searchYoutube(searchTerm) {
-    requestVideos(searchTerm);
-}
-*/
+define(['jquery', 'knockout'], function($, ko) {
+    ko.components.register('search-form', { require: 'searchForm' });
 
-var ViewModel = function(){
     function requestVideos (searchTerm) {
         console.log('requesting vids...');
         var requestURL = 'https://www.googleapis.com/youtube/v3/search?part=snippet&' +
@@ -23,17 +19,20 @@ var ViewModel = function(){
         };
 
         $.ajax(requestURL, requestSettings);
-    };
-
-    var self = this;
-
-    //self.searchInput = ko.observable();
-    self.parseSearch = function(searchTerm) {
-        //searchInput(searchTerm.query.value);
-        requestVideos(searchTerm.query.value);
     }
 
-    self.searchResults = ko.observableArray();
-}
+    var ViewModel = function(){
+        var self = this;
 
-ko.applyBindings(ViewModel);
+        self.searchTerm = ko.observable();
+        self.initSearch = ko.computed(function(){
+            if (self.searchTerm()) {
+                requestVideos(self.searchTerm());
+            }
+        });
+
+        self.searchResults = ko.observableArray();
+    };
+
+    return ViewModel;
+});
