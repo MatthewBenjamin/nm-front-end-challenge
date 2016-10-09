@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Youtube Search</title>
+    <link href="styles/style.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Youtube Search</h1>
+        <form data-bind="submit: parseSearch">
+            <input type="text" placeholder="Enter your search term here!" name="query">
+            <button type="submit">Submit</button>
+        </form>
+    </header>
+    <main>
+        <div class="column column-one">
+            <ul data-bind="foreach: searchResults">
+                <li>
+                    <p data-bind="text: snippet.title"></p>
+                </li>
+            </ul>
+        </div><div class="column column-two"></div>
+    </main>
+    <footer></footer>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+    <script type="text/javascript" src="scripts/app.js"></script>
+
+</body>
+</html>
