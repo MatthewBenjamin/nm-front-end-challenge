@@ -1,7 +1,5 @@
-<ul data-bind="foreach: videoResults">
-    <li class="results-list-item" data-bind="click: currentVideoSelection">
-        <img data-bind="attr: { src: smallThumbnail }"><div>
-            <p data-bind="text: title"></p>
-        </div>
+<ul class="results-list" data-bind="foreach: videoResults">
+    <li class="results-list__item" data-bind="click: currentVideoSelection">
+        <img class="results-list__item__img" data-bind="attr: { src: smallThumbnail }"><p class="results-list__item__text" data-bind="text: title"></p>
     </li>
 </ul>

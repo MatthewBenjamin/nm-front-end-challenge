@@ -7,20 +7,19 @@
     <link href="styles/style.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Youtube Search</h1>
+    <header class="main-header">
+        <h1 class="main-header__heading">Youtube Search</h1>
         <div data-bind="component: {
             name: 'search-form'
             }">
         </div>
     </header>
-    <main>
-        <a class="nav-toggle" data-bind="visible: videoResults().length > 0, css: { active: mobileMenu() },
+    <main class="main-content">
+        <a class="nav-toggle" data-bind="visible: videoResults().length > 0, css: { 'nav-toggle--active': mobileMenu() },
             click: function() { toggleMobileMenu() }">&#x2261;</a>
-        <div class="current-video column">
-            <div data-bind="component: {
+            <div class="current-video-container" data-bind="component: {
                 name: 'current-video-selection'
-            }"></div></div><div class="results-nav column" data-bind="css: { active: mobileMenu() }">
+            }"></div><div class="results-list-container" data-bind="css: { 'results-list-container--active': mobileMenu() }">
             <div data-bind="component: {
                 name: 'results-list'
             }"></div>
@@ -29,7 +28,9 @@
             }"></div>
         </div>
     </main>
-    <footer></footer>
+    <footer class="main-footer">
+        <p class="main-footer__content">see more at: <a class="main-footer__link" href="https://matthewbenjamin.github.io">my portfolio</a></p>
+    </footer>
 
     <script data-main="scripts/init.js" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.2/require.min.js"></script>
 </body>
