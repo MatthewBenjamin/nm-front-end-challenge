@@ -23,11 +23,11 @@ requirejs.config({
 });
 
 // launch app w/ require dependencies
-require(['knockout', 'app', 'searchForm'],
-    function (ko, ViewModel, searchForm) {
-    ko.components.register('search-form', { require: 'searchForm' });
-    ko.components.register('results-list', { require: 'resultsList' });
-    ko.components.register('meta-results', { require: 'metaResults' });
-    ko.components.register('current-video-selection', { require: 'currentVideoSelection' });
-    ko.applyBindings(ViewModel);
-});
+require(['knockout', 'app'],
+    function (ko, ViewModel) {
+        ko.components.register('search-form', { require: 'searchForm' });
+        ko.components.register('results-list', { require: 'resultsList' });
+        ko.components.register('meta-results', { require: 'metaResults' });
+        ko.components.register('current-video-selection', { require: 'currentVideoSelection' });
+        ko.applyBindings(ViewModel);
+    });

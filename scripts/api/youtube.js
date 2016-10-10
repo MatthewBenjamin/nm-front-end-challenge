@@ -12,9 +12,9 @@ define(['jquery', 'videoResult'], function ($, videoResult){
     // TODO: refactor into general alphabatize, move into util library
     function sortSnippets (snippetList) {
         snippetList.sort(function(a,b) {
-          var snippetA = a.snippet.title.toUpperCase();
-          var snippetB = b.snippet.title.toUpperCase();
-          return (snippetA < snippetB) ? -1 : (snippetA > snippetB) ? 1 : 0;
+            var snippetA = a.snippet.title.toUpperCase();
+            var snippetB = b.snippet.title.toUpperCase();
+            return (snippetA < snippetB) ? -1 : (snippetA > snippetB) ? 1 : 0;
         });
     }
 

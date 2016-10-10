@@ -6,8 +6,8 @@ define(['text!../../kotemplates/metaresults.html'], function(htmlString) {
 
         this.parseSearch = function(pageToken) {
             this.searchPageToken(pageToken);
-        }
-    }
+        };
+    };
 
-    return { viewModel: metaResults, template: htmlString }
+    return { viewModel: metaResults, template: htmlString };
 });

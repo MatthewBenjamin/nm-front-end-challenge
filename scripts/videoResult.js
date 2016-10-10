@@ -6,11 +6,11 @@ define(['knockout'], function(ko) {
     }
 
     function makeVideoUri(videoId) {
-        return "https://www.youtube.com/watch?v=" + videoId;
+        return 'https://www.youtube.com/watch?v=' + videoId;
     }
 
     function makeChannelUri(channelId) {
-        return "https://www.youtube.com/channel/" + channelId;
+        return 'https://www.youtube.com/channel/' + channelId;
     }
 
     var videoResult = function(videoSnippet) {
