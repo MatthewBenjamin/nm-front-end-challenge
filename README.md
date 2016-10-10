@@ -8,7 +8,9 @@ View at: [matthewbenjamin.github.io/nm-front-end-challenge](https://matthewbenja
    ```
    r.js -o scripts/require-build.js
    ```
+
 ## Directories
+
 | Directory            | Contents                                  |
 |----------------------|-------------------------------------------|
 | kotemplates          | HTML templates for Knockout.js components |
