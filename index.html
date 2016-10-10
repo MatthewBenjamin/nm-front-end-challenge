@@ -18,6 +18,7 @@
         </div>
     </header>
     <main class="main-content">
+        <h2 data-bind="text: errorMessage"></h2>
         <a class="nav-toggle" data-bind="visible: videoResults().length > 0, css: { 'nav-toggle--active': mobileMenu() },
             click: function() { toggleMobileMenu() }">&#x2261;</a>
             <div class="current-video-container" data-bind="component: {

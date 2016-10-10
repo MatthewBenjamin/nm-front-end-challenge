@@ -48,25 +48,29 @@ define(['jquery', 'videoResult'], function ($, videoResult){
     }
 
     youtube.requestVideos = function (
-        searchTerm, videoResultsContainer, metaResultsContainer, currentVideoSelection) {
+        searchTerm,
+        videoResultsContainer,
+        metaResultsContainer,
+        currentVideoSelection,
+        errorMessageContainer) {
 
         var requestURL = makeRequestURL(searchTerm);
 
         var requestSettings = {
             success: function (data) {
-                var results = parseResults(data)
+                var results = parseResults(data);
                 videoResultsContainer(results.videoResults);
                 metaResultsContainer(results.metaResults);
                 currentVideoSelection(videoResultsContainer()[0]);
             },
             error: function () {
-                // TODO: add error msg for user
-                console.log('ERROR');
+                errorMessageContainer(
+                    "Sorry, there was an error in loading your results");
             },
             timeout: 8000,
         };
         $.ajax(requestURL, requestSettings);
-    }
+    };
 
     return youtube;
 });
