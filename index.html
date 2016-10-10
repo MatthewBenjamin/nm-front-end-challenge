@@ -10,7 +10,10 @@
     <header class="main-header">
         <h1 class="main-header__heading">Youtube Search</h1>
         <div data-bind="component: {
-            name: 'search-form'
+            name: 'search-form',
+            params: {
+                searchInput: searchInput
+            }
             }">
         </div>
     </header>
@@ -24,7 +27,10 @@
                 name: 'results-list'
             }"></div>
             <div data-bind="component: {
-                name: 'meta-results'
+                name: 'meta-results',
+                params: {
+                    searchPageToken: searchPageToken
+                }
             }"></div>
         </div>
     </main>

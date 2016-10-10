@@ -1,5 +1,14 @@
-<div data-bind="with: metaResults">
-    <!-- ko if: pageInfo -->
-    <p data-bind="text: pageInfo.totalResults"></p>
-    <!-- /ko -->
+<div class="meta-results" data-bind="with: metaResults">
+    <p>
+        <span>Total Results: </span>
+        <span data-bind="text: totalResults"></span>
+    </p>
+    <div>
+        <!-- ko if: prevPageToken -->
+        <button class="meta-results__btn" data-bind="click: function() { $parent.parseSearch(prevPageToken) }">Prev</button>
+        <!-- /ko -->
+        <!-- ko if: nextPageToken -->
+        <button class="meta-results__btn" data-bind="click: function() { $parent.parseSearch(nextPageToken) }">Next</button>
+        <!-- /ko -->
+    </div>
 </div>

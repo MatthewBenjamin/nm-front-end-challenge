@@ -2,6 +2,8 @@ define(['jquery', 'knockout', 'youtube'], function($, ko, youtube) {
     var ViewModel = function(){
         var self = this;
 
+        self.searchInput = ko.observable();
+        self.searchPageToken = ko.observable();
         self.videoResults = ko.observableArray();
         self.metaResults = ko.observable();
         self.currentVideoSelection = ko.observable();
@@ -17,15 +19,26 @@ define(['jquery', 'knockout', 'youtube'], function($, ko, youtube) {
             }
         };
 
-        self.parseSearch = function (searchInput) {
-            var searchTerm = searchInput.query.value;
+        self.performSearch = ko.computed(function () {
+            var searchInput = self.searchInput()
+            var searchPageToken = self.searchPageToken();
             var videoResultsContainer = self.videoResults;
             var metaResultsContainer = self.metaResults;
             var currentVideoSelection = self.currentVideoSelection;
+            var searchTerm;
 
-            youtube.requestVideos(searchTerm, videoResultsContainer,
-                metaResultsContainer, currentVideoSelection);
-        };
+            if (searchInput && searchPageToken) {
+                searchTerm = 'q=' + searchInput + '&' +
+                    'pageToken=' + searchPageToken;
+                self.searchPageToken(null);
+                youtube.requestVideos(searchTerm, videoResultsContainer,
+                    metaResultsContainer, currentVideoSelection);
+            } else if (searchInput) {
+                searchTerm = 'q=' + searchInput;
+                youtube.requestVideos(searchTerm, videoResultsContainer,
+                    metaResultsContainer, currentVideoSelection);
+            }
+        });
     };
 
     return ViewModel;

@@ -2,5 +2,14 @@
 define(['text!../../kotemplates/searchform.html'],
     function(htmlString) {
 
-    return { template: htmlString }
+    var searchForm = function(params) {
+        this.searchInput = params.searchInput;
+
+        this.parseSearch = function(searchInput) {
+            var searchInput = searchInput.query.value;
+            this.searchInput(searchInput);
+        }
+    }
+
+    return { viewModel: searchForm, template: htmlString }
 });

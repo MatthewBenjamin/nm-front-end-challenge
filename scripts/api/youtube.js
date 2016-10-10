@@ -6,7 +6,7 @@ define(['jquery', 'videoResult'], function ($, videoResult){
         return 'https://www.googleapis.com/youtube/v3/search?part=snippet&' +
                'type=video&' +
                'key=AIzaSyA8B9NC0lW-vqhQzWmVp8XwEMFbyg01blI&' +
-               'q=' + searchTerm;
+               searchTerm;
     }
 
     // TODO: refactor into general alphabatize, move into util library
@@ -32,10 +32,8 @@ define(['jquery', 'videoResult'], function ($, videoResult){
         return {
             nextPageToken: results.nextPageToken || null,
             prevPageToken: results.prevPageToken || null,
-            pageInfo: {
-                totalResults: results.pageInfo.totalResults || null,
-                resultsPerPage: results.pageInfo.resultsPerPage || null,
-            },
+            totalResults: results.pageInfo.totalResults || null,
+            resultsPerPage: results.pageInfo.resultsPerPage || null,
         };
     }
 
