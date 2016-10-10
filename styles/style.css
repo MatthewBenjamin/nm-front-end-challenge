@@ -15,6 +15,17 @@
     text-align: center;
 }
 
+body {
+    margin: 0;
+}
+
+.search-form__btn,
+.results-list__item,
+.nav-toggle,
+.results-list-container {
+    transition: 0.6s ease;
+}
+
 /* Header & Footer */
 .main-header,
 .main-footer {
@@ -22,7 +33,7 @@
 }
 
 .main-header {
-    height: 150px;
+    padding: 10px;
 }
 
     .main-header__heading {
@@ -46,7 +57,6 @@
         color: #fff;
         background: #333;
         border: 1px solid;
-        transition: 0.6s ease;
     }
 
         .search-form__btn:hover {
@@ -71,9 +81,10 @@
     }
 
 .main-content {
-    min-height: calc(100vh - 200px);
+    min-height: calc(100vh - 250px);
     max-width: 960px;
     margin: 20px auto;
+    position: relative;
 }
 
 .nav-toggle {
@@ -111,11 +122,9 @@
     .results-list__item {
         padding: 0;
         width: 320px;
-        transition: 0.6s ease;
         height: 90px;
         background: #002b49;
         color: #f5f5f5;
-        transition: 0.6s ease;
         border-radius: 5%;
         margin: 5px;
     }
@@ -144,7 +153,7 @@
         }
 
 /* page breaks */
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 740px) {
     .current-video-container {
         width: calc(100% - 210px);
         max-width: 370px;
@@ -153,7 +162,7 @@
     .results-list__item {
         width: 200px;
     }
-        .results-list__item > img {
+        .results-list__item__img {
             display: none;
         }
 }
@@ -172,7 +181,7 @@
         }
 }
 
-@media screen and (max-width: 474px) {
+@media screen and (max-width: 490px) {
     .current-video-container,
     .results-list-container {
         display: block;
@@ -181,33 +190,34 @@
     .current-video-container {
         width: 100%;
         min-width: auto;
-        margin-top: 50px;
+        margin: auto;
+        padding-top: 50px;
     }
 
     .nav-toggle {
         position: absolute;
-        top: 180px;
-        right: 15px;
+        right: 20px;
         font-size: 3.5em;
         display: inline-block;
         line-height: 0.5;
-        transition: 0.6s ease;
     }
 
         .nav-toggle--active {
-            transform: translateX(-210px);
+            transform: translateX(-220px);
         }
 
-    .results-list-container{
+    .results-list-container {
         z-index: 1;
         position: fixed;
         top: 0;
         right: 0;
-        transform: translateX(210px);
-        transition: 0.6s ease;
+        transform: translateX(220px);
         background: #fff;
         border-radius: 5%;
+        max-height: 100vh;
+        overflow: scroll;
     }
+
         .results-list-container--active {
             transform: translateX(0);
         }
