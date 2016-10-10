@@ -1,7 +1,8 @@
 <div data-bind="with: currentVideoSelection">
     <a data-bind="attr: { href: videoLink }">
         <h2 data-bind="text: title"></h2>
-        <img data-bind="attr: { src: mediumThumbnail }">
+        <img class="medium-thumbnail" data-bind="attr: { src: mediumThumbnail }">
+        <img class="small-thumbnail" data-bind="attr: { src: smallThumbnail }">
     </a>
     <p data-bind="text: description"></p>
     <p><span>Published </span><span data-bind="text: publishDate"></span></p>
