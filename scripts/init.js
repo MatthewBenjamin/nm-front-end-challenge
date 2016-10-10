@@ -5,7 +5,7 @@ requirejs.config({
             'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min',
         ],
         knockout: [
-            'http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.3.0',
+            'https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min',
         ],
         app: 'app',
         // kocomponents
