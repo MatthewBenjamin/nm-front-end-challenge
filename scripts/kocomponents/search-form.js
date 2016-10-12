@@ -7,6 +7,7 @@ define(['text!../../kotemplates/searchform.html'],
             this.searchInput = params.searchInput;
 
             this.parseSearch = function(searchInput) {
+                this.searchInput(null);
                 searchInput = searchInput.query.value;
                 this.searchInput(searchInput);
             };
