@@ -7,15 +7,16 @@ requirejs.config({
         knockout: [
             'https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min',
         ],
+        // ko ViewModels
         app: 'app',
-        // kocomponents
+        videoResult: 'videoResult',
+        // ko components
         searchForm: 'kocomponents/search-form',
         resultsList: 'kocomponents/results-list',
         metaResults: 'kocomponents/meta-results',
         currentVideoSelection: 'kocomponents/current-video-selection',
         // api
         youtube: 'api/youtube',
-        videoResult: 'videoResult',
     },
 });
 

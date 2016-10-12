@@ -1,4 +1,4 @@
-// videoResult.js
+// videoResult.js - Youtube Search Result: Item
 define(['knockout'], function(ko) {
     function parseDate(dateinfo) {
         var dateObj = new Date(dateinfo);
@@ -13,6 +13,7 @@ define(['knockout'], function(ko) {
         return 'https://www.youtube.com/channel/' + channelId;
     }
 
+    // search result item object
     var videoResult = function(videoSnippet) {
         this.videoLink = ko.observable(makeVideoUri(videoSnippet.id.videoId));
         this.channelLink = ko.observable(makeChannelUri(videoSnippet.snippet.channelId));

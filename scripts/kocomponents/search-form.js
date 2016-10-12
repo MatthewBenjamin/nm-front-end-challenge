@@ -2,6 +2,7 @@
 define(['text!../../kotemplates/searchform.html'],
     function(htmlString) {
 
+        // update searchInput query term in main ViewModel
         var searchForm = function(params) {
             this.searchInput = params.searchInput;
 

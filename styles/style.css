@@ -6,9 +6,11 @@
     -Main Content
         -Current Video
         -Video Results List
-        -Responsive
+        -Page Breaks
 */
 
+/* Global Settings */
+/* TODO: refactor - * selector causes performance loss */
 * {
     box-sizing: border-box;
     font-family: "Lucida Grande";
@@ -36,6 +38,7 @@ body {
     padding: 10px;
 }
 
+    /* TODO: refactor color: #fff - shared among several classes */
     .main-header__heading {
         margin: 0;
         padding: 10px 0;

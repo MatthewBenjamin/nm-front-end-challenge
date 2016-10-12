@@ -2,7 +2,8 @@
 define(['jquery', 'videoResult'], function ($, videoResult){
     var youtube = {};
 
-    function makeRequestURL(searchTerm) {
+    // create API request URI from query term & search pageToken
+    function makeRequestUri(searchTerm) {
         return 'https://www.googleapis.com/youtube/v3/search?part=snippet&' +
                'type=video&' +
                'key=AIzaSyA8B9NC0lW-vqhQzWmVp8XwEMFbyg01blI&' +
@@ -18,6 +19,7 @@ define(['jquery', 'videoResult'], function ($, videoResult){
         });
     }
 
+    // create videoResult object from results list - see ../videoResult.js
     function parseVideoResults(videoList) {
         sortSnippets(videoList);
         var videoResults = [];
@@ -28,6 +30,7 @@ define(['jquery', 'videoResult'], function ($, videoResult){
         return videoResults;
     }
 
+    // create search metadata
     function parseMetadata(results) {
         return {
             nextPageToken: results.nextPageToken || null,
@@ -47,6 +50,7 @@ define(['jquery', 'videoResult'], function ($, videoResult){
         };
     }
 
+    // submit youtube video search request
     youtube.requestVideos = function (
         searchTerm,
         videoResultsContainer,
@@ -54,7 +58,7 @@ define(['jquery', 'videoResult'], function ($, videoResult){
         currentVideoSelection,
         errorMessageContainer) {
 
-        var requestURL = makeRequestURL(searchTerm);
+        var requestUri = makeRequestUri(searchTerm);
 
         var requestSettings = {
             success: function (data) {
@@ -69,7 +73,7 @@ define(['jquery', 'videoResult'], function ($, videoResult){
             },
             timeout: 8000,
         };
-        $.ajax(requestURL, requestSettings);
+        $.ajax(requestUri, requestSettings);
     };
 
     return youtube;

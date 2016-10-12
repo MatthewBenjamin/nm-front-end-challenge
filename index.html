@@ -18,15 +18,22 @@
         </div>
     </header>
     <main class="main-content">
+        <!-- API error/status msg -->
         <h2 data-bind="text: errorMessage"></h2>
+        <!-- menu toggle on small screens -->
         <a class="nav-toggle" data-bind="visible: videoResults().length > 0, css: { 'nav-toggle--active': mobileMenu() },
             click: function() { toggleMobileMenu() }">&#x2261;</a>
-            <div class="current-video-container" data-bind="component: {
-                name: 'current-video-selection'
-            }"></div><div class="results-list-container" data-bind="css: { 'results-list-container--active': mobileMenu() }">
+        <!-- search results display
+                current selection   -->
+        <div class="current-video-container" data-bind="component: {
+            name: 'current-video-selection'
+        }"></div><!-- results list/info
+        --><div class="results-list-container" data-bind="css: { 'results-list-container--active': mobileMenu() }">
+            <!-- list -->
             <div data-bind="component: {
                 name: 'results-list'
             }"></div>
+            <!-- metadata -->
             <div data-bind="component: {
                 name: 'meta-results',
                 params: {
