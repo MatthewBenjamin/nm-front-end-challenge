@@ -2,6 +2,7 @@
 
     -Global
     -Typography
+    -Common Properties
     -Header / Footer
     -Main Content
         -Current Video
@@ -10,17 +11,25 @@
 */
 
 /* Global Settings */
-/* TODO: refactor - * selector causes performance loss */
 * {
     box-sizing: border-box;
-    font-family: "Lucida Grande";
-    text-align: center;
 }
 
 body {
     margin: 0;
 }
 
+/* Typography */
+.main-header,
+.main-content,
+.main-footer,
+.search-form__input,
+.search-form__btn {
+    font-family: "Lucida Grande";
+    text-align: center;
+}
+
+/* Common Properties */
 .search-form__btn,
 .results-list__item,
 .nav-toggle,
