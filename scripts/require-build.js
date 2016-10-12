@@ -1,10 +1,10 @@
 // app.build.js
 
 ({
-    appDir: "../",
-    baseUrl: "scripts",
+    appDir: '../',
+    baseUrl: 'scripts',
     mainConfigFile: 'init.js',
-    dir: "../build",
+    dir: '../build',
     modules: [
         {
             name: 'init',
@@ -20,7 +20,7 @@
             findNestedDependencies: true,
         },
     ],
-    optimizeCss: "standard",
+    optimizeCss: 'standard',
     paths: {
         jquery: 'empty:',
         knockout: 'empty:',

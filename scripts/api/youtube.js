@@ -69,7 +69,7 @@ define(['jquery', 'videoResult'], function ($, videoResult){
             },
             error: function () {
                 errorMessageContainer(
-                    "Sorry, there was an error in loading your results");
+                    'Sorry, there was an error in loading your results');
             },
             timeout: 8000,
         };
