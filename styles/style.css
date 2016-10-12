@@ -44,15 +44,20 @@ body {
     background: #002b49;
 }
 
+    .main-header__heading,
+    .search-form__btn,
+    .main-footer__content,
+    .main-footer__link {
+        color: #fff;
+    }
+
 .main-header {
     padding: 10px;
 }
 
-    /* TODO: refactor color: #fff - shared among several classes */
     .main-header__heading {
         margin: 0;
         padding: 10px 0;
-        color: #fff;
     }
 
     .search-form__input,
@@ -67,7 +72,6 @@ body {
     }
 
     .search-form__btn {
-        color: #fff;
         background: #333;
         border: 1px solid;
     }
@@ -86,11 +90,6 @@ body {
 
     .main-footer__content {
         margin: 0;
-    }
-
-    .main-footer__content,
-    .main-footer__link {
-        color: #fff;
     }
 
 .main-content {
