@@ -1,4 +1,4 @@
-define(['jquery', 'knockout', 'youtube'], function($, ko, youtube) {
+define(['knockout', 'youtube'], function(ko, youtube) {
     var ViewModel = function(){
         var self = this;
 
