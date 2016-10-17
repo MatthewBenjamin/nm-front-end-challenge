@@ -36,18 +36,19 @@ define(['jquery', 'knockout', 'youtube'], function($, ko, youtube) {
             var metaResultsContainer = self.metaResults;
             var currentVideoSelection = self.currentVideoSelection;
             var errorMessageContainer = self.errorMessage;
-            var searchTerm;
+            var searchTerm = {};
 
             // next page in current search input
             if (searchInput && searchPageToken) {
-                searchTerm = 'q=' + searchInput + '&' +
-                    'pageToken=' + searchPageToken;
+                searchTerm.query = searchInput;
+                searchTerm.pageToken = searchPageToken;
                 self.searchPageToken(null);
                 youtube.requestVideos(searchTerm, videoResultsContainer,
                     metaResultsContainer, currentVideoSelection, errorMessageContainer);
             // new search input
             } else if (searchInput) {
-                searchTerm = 'q=' + searchInput;
+                searchTerm.query = searchInput;
+                searchTerm.pageToken = null;
                 youtube.requestVideos(searchTerm, videoResultsContainer,
                     metaResultsContainer, currentVideoSelection, errorMessageContainer);
             }

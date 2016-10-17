@@ -3,11 +3,13 @@ define(['jquery', 'videoResult'], function ($, videoResult){
     var youtube = {};
 
     // create API request URI from query term & search pageToken
-    function makeRequestUri(searchTerm) {
+    function makeRequestUri(queryObject) {
+        var pageTokenTerm =
+            queryObject.pageToken ? '&pageToken=' + queryObject.pageToken : "";
         return 'https://www.googleapis.com/youtube/v3/search?part=snippet&' +
                'type=video&' +
                'key=AIzaSyA8B9NC0lW-vqhQzWmVp8XwEMFbyg01blI&' +
-               searchTerm;
+               'q=' + queryObject.query + pageTokenTerm;
     }
 
     // TODO: refactor into general alphabatize, move into util library
