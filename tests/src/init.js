@@ -22,7 +22,8 @@ requirejs.config({
         jasmineHtml: '../tests/lib/jasmine-2.5.2/jasmine-html',
         jasmineBoot: '../tests/lib/jasmine-2.5.2/boot',
         // jasmine specs
-        appSpecs: '../tests/spec/app-specs',
+        viewmodelSpecs: '../tests/spec/viewmodel-specs',
+        youtubeSpecs: '../tests/spec/youtube-specs',
     },
     shim: {
         jasmineHtml: {
@@ -38,12 +39,17 @@ requirejs.config({
 });
 
 // launch app w/ require dependencies
-require(['knockout', 'app', 'jasmineBoot', 'appSpecs'],
+require(['knockout', 'app', 'jasmineBoot'],
     function (ko, ViewModel) {
+        // load app
         ko.components.register('search-form', { require: 'searchForm' });
         ko.components.register('results-list', { require: 'resultsList' });
         ko.components.register('meta-results', { require: 'metaResults' });
         ko.components.register('current-video-selection', { require: 'currentVideoSelection' });
         ko.applyBindings(ViewModel);
-        window.onload()
+        // load tests
+        require(['viewmodelSpecs', 'youtubeSpecs'], function () {
+            // trigger jasmine
+            window.onload();
+        });
     });
