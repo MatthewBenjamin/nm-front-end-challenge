@@ -13,8 +13,20 @@ describe('youtube search', function() {
         }, 4500);
     });
 
-    it('retrieves search results', function() {
+    it('requests and retrieves search results', function() {
         expect(self.videoResults().length).toBeTruthy();
     });
 
+    it('parses video snippet data', function() {
+        var video = self.videoResults()[0];
+        expect(video.videoLink()).toBeDefined();
+        expect(video.channelLink()).toBeDefined();
+        expect(video.channelTitle()).toBeDefined();
+        expect(video.description()).toBeDefined();
+        expect(video.dateInfo()).toBeDefined();
+        expect(video.publishDate()).toBeDefined();
+        expect(video.smallThumbnail()).toBeDefined();
+        expect(video.mediumThumbnail()).toBeDefined();
+        expect(video.title()).toBeDefined();
+    });
 });
