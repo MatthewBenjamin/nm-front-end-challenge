@@ -14,8 +14,7 @@ View at: [matthewbenjamin.github.io/nm-front-end-challenge](https://matthewbenja
 Note, be sure to deploy to localhost when accessing a local copy. Otherwise certain application components will not load. See [here](https://docs.python.org/2/library/simplehttpserver.html) for info on setting up a local server.
 
 ## Tests
-1. Make sure you have an updated build in the build directory (see above)
-2. To run tests, open tests/SpecRunner.html in a browser
+To run tests, simply open tests/SpecRunner.html in a browser
 
 ## Directories
 
