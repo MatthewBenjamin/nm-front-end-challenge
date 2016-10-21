@@ -36,19 +36,17 @@ define(['knockout', 'youtube'], function(ko, youtube) {
             var metaResultsContainer = self.metaResults;
             var currentVideoSelection = self.currentVideoSelection;
             var errorMessageContainer = self.errorMessage;
-            var searchTerm = {};
 
-            // next page in current search input
-            if (searchInput && searchPageToken) {
-                searchTerm.query = searchInput;
-                searchTerm.pageToken = searchPageToken;
-                self.searchPageToken(null);
-                youtube.requestVideos(searchTerm, videoResultsContainer,
-                    metaResultsContainer, currentVideoSelection, errorMessageContainer);
-            // new search input
-            } else if (searchInput) {
-                searchTerm.query = searchInput;
-                searchTerm.pageToken = null;
+            // pageToken is null for new searches
+            var searchTerm = {
+                query: searchInput,
+                pageToken: searchPageToken,
+            };
+            // reset so new searches won't use previous pageToken
+            self.searchPageToken(null);
+
+            // if prevents empty search from executing
+            if (searchInput) {
                 youtube.requestVideos(searchTerm, videoResultsContainer,
                     metaResultsContainer, currentVideoSelection, errorMessageContainer);
             }
